@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HIG GPT</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+      font-family: "Segoe UI", sans-serif;
+      color: #f8f9fa;
+      overflow-x: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #111827, #1f2937);
+      color: white;
+      transition: width 0.3s ease;
+      width: 240px;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
+    }
+    .sidebar.collapsed {
+      width: 70px;
+    }
+    .sidebar .label {
+      transition: opacity 0.3s ease;
+    }
+    .sidebar.collapsed .label {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .sidebar-item {
+      padding: 12px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+      transition: all 0.3s ease;
+      font-size: 1.05rem;
+    }
+    .sidebar-item i {
+      font-size: 1.3rem;
+    }
+    .sidebar-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(4px);
+    }
+    .active-item {
+      background: rgba(59, 130, 246, 0.2);
+      border-left: 4px solid #3b82f6;
+      color: #3b82f6;
+    }
+    .active-item i {
+      color: #3b82f6;
+    }
+
+    /* Main Content */
+    main {
+      min-height: 100vh;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      margin: 20px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 0.5s ease;
+    }
+
+    /* Search Bar */
+    .search-bar {
+      max-width: 500px;
+      border-radius: 50px;
+      padding: 12px 20px;
+      border: none;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <nav id="sidebar" class="sidebar col-auto d-flex flex-column justify-content-between p-3">
+        <div>
+          <div class="d-flex align-items-center justify-content-between mb-4 toggle-btn" onclick="toggleSidebar()">
+            <h1 class="fs-5 fw-bold m-0 logo-text">HIG GPT</h1>
+            <i class="bi bi-list fs-3"></i>
+          </div>
+          <ul class="list-unstyled" id="menu">
+            <li class="sidebar-item active-item" data-section="Home"><i class="bi bi-house-door"></i> <span class="label">Home</span></li>
+            <li class="sidebar-item" data-section="Chats"><i class="bi bi-chat-dots"></i> <span class="label">Chats</span></li>
+            <li class="sidebar-item" data-section="Chat History"><i class="bi bi-clock-history"></i> <span class="label">Chat History</span></li>
+            <li class="sidebar-item" data-section="Library"><i class="bi bi-collection"></i> <span class="label">Library</span></li>
+            <li class="sidebar-item" data-section="Settings"><i class="bi bi-gear"></i> <span class="label">Settings</span></li>
+          </ul>
+        </div>
+
+        <!-- Profile Dropdown -->
+        <div class="dropdown profile">
+          <div class="sidebar-item d-flex align-items-center gap-2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-circle"></i> <span class="label">Profile</span>
+          </div>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" href="#">Account Settings</a></li>
+            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="col" id="content">
+        <div class="d-flex justify-content-center mb-4">
+          <input type="text" class="form-control search-bar" placeholder="🔍 Search HIG GPT..." disabled />
+        </div>
+        <h2 class="fw-bold" id="section-title">Home</h2>
+        <p class="fs-5" id="section-text">Welcome to HIG GPT 👨‍💻 — explore your sections from the left menu.</p>
+      </main>
+    </div>
+  </div>
+
+  <!-- Logout Confirmation Modal -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white rounded-3 shadow-lg">
+        <div class="modal-header border-0">
+          <h5 class="modal-title">Confirm Logout</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">Are you sure you want to logout?</div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">No</button>
+          <button type="button" class="btn btn-danger rounded-pill px-4">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    const toggleBtnIcon = document.querySelector(".toggle-btn i"); // selects the hamburger icon
+
+    sidebar.classList.toggle("collapsed");
+
+    // Hide the hamburger icon if sidebar is collapsed, show it otherwise
+    if (sidebar.classList.contains("collapsed")) {
+      toggleBtnIcon.style.display = "none";
+    } else {
+      toggleBtnIcon.style.display = "inline-block";
+    }
+  }
+  
+
+  // Menu switching
+  document.querySelectorAll(".sidebar-item").forEach(item => {
+    item.addEventListener("click", () => {
+      document.querySelectorAll(".sidebar-item").forEach(i => i.classList.remove("active-item"));
+      item.classList.add("active-item");
+
+      const section = item.getAttribute("data-section");
+      document.getElementById("section-title").textContent = section;
+      document.getElementById("section-text").textContent = `You are in the ${section} section.`;
+    });
+  });
+
+  // Close profile dropdown when a link inside it is clicked
+  document.querySelectorAll(".dropdown-menu .dropdown-item").forEach(link => {
+    link.addEventListener("click", () => {
+      const dropdown = bootstrap.Dropdown.getInstance(link.closest(".dropdown"));
+      if (dropdown) dropdown.hide();
+    });
+  });
+
+  // Close profile dropdown if clicked outside
+  document.addEventListener("click", function(event) {
+    const dropdownEl = document.querySelector(".dropdown");
+    const dropdown = bootstrap.Dropdown.getInstance(dropdownEl);
+    if (dropdownEl && !dropdownEl.contains(event.target)) {
+      if (dropdown) dropdown.hide();
+    }
+  });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
