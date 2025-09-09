@@ -686,16 +686,3 @@ nav ul li a:hover {
 }
 
 
-.github-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 10px; /* Adjust spacing from the nav menu */
-    color: var(--text-color); /* Use your existing color variables */
-    transition: color 0.3s ease;
-}
-
-/* Hover effect */
-.github-icon:hover {
-    color: var(--accent-color); /* Change to an accent color on hover */
-}
