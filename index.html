@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dominique E's Portfolio</title>
+    <link rel="icon" type="image/png" href="higashiyama.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -16,7 +17,10 @@
             <a href="#home" class="header-name">
                 <h1>Dominique E</h1>
             </a>
-            <nav>
+            <button class="menu-toggle" aria-controls="main-nav" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+            <nav id="main-nav">
                 <ul>
                     <li><a href="#about">About Me</a></li>
                     <li><a href="#projects">Projects</a></li>
@@ -90,9 +94,9 @@
                         <h3>⁂⁂ Project 5 ⁂⁂</h3>
                         <p>Schedule</p>
                     </a>
-                    <a href="https://github.com/DomPogs/personal-web1" class="card project-card">
-                        <h3>My github link</h3>
-                        <p>this will get you to the reposirtory</p>
+                    <a href="#" class="card project-card">
+                        <h3>⁂⁂ Project 6 ⁂⁂</h3>
+                        <p>Not yet</p>
                     </a>
                 </div>
             </div>
@@ -179,7 +183,7 @@
                             <img src="slamdunk.jpg" alt="Slam Dunk anime cover art" loading="lazy">
                         </div>
                         <div class="music-info">
-                            <h3> Kimi ga suki da to sakebitai</h3>
+                            <h3>Kimi ga suki da to sakebitai</h3>
                             <p>BAAD - Slam Dunk OST</p>
                             <audio controls>
                                 <source src="BAAD - Kimi ga suki da to sakebitai (Lyrics) Slamdunk ost I 君が好きだと叫びたい [aTzNMZ3Z5cE].mp3" type="audio/mpeg">
@@ -187,27 +191,27 @@
                             </audio>
                         </div>
                     </div>
-
+        
                     <div class="music-card">
                         <div class="album-art">
                             <img src="yourname.jpg" alt="Your Name anime cover art" loading="lazy">
                         </div>
                         <div class="music-info">
-                            <h3> Sparkle</h3>
-                            <p>RADWIMPS - Your Name OST</p>
+                            <h3>Sparkle</h3>
+                            <p>RADWIMPS</p>
                             <audio controls>
                                 <source src="Sparkle (Lyrics) Your name [EFet7gbhGpU].mp3" type="audio/mpeg">
                                 Your browser does not support the audio element.
                             </audio>
                         </div>
                     </div>
-
+        
                     <div class="music-card">
                         <div class="album-art">
                             <img src="tracingthatdream.jpg" alt="YOASOBI The Way of a Dream cover art" loading="lazy">
                         </div>
                         <div class="music-info">
-                            <h3> Ano Yume o Nazotte</h3>
+                            <h3>Ano Yume o Nazotte</h3>
                             <p>YOASOBI</p>
                             <audio controls>
                                 <source src="YOASOBI「あの夢をなぞって」 Official Music Video [sAuEeM_6zpk].mp3" type="audio/mpeg">
@@ -215,7 +219,7 @@
                             </audio>
                         </div>
                     </div>
-
+        
                     <div class="music-card">
                         <div class="album-art">
                             <img src="love me more than i do.jpg" alt="TAKANENO NADESHIKO" loading="lazy">
@@ -229,13 +233,13 @@
                             </audio>
                         </div>
                     </div>
-
+        
                     <div class="music-card">
                         <div class="album-art">
                             <img src="yumemusubi.jpg" alt="TAKANEKO" loading="lazy">
                         </div>
                         <div class="music-info">
-                            <h3>  ユメムスビ／高嶺のなでしこ【HoneyWorks】</h3>
+                            <h3>ユメムスビ／高嶺のなでしこ【HoneyWorks】</h3>
                             <p>TAKANE NO NADESHIKO</p>
                             <audio controls>
                                 <source src="MV ユメムスビ／高嶺のなでしこ【HoneyWorks】 .mp3" type="audio/mpeg">
@@ -243,13 +247,13 @@
                             </audio>
                         </div>
                     </div>
-
+        
                     <div class="music-card">
                         <div class="album-art">
                             <img src="onnanokowatsuyoi.jpg" alt="TAKANENO NADESHIKO" loading="lazy">
                         </div>
                         <div class="music-info">
-                            <h3> 女の子は強い／高嶺のなでしこ【HoneyWorks】</h3>
+                            <h3>女の子は強い／高嶺のなでしこ【HoneyWorks】</h3>
                             <p>TAKANE NO NADESHIKO</p>
                             <audio controls>
                                 <source src="MV女の子は強い／高嶺のなでしこ【HoneyWorks】 [edid66UmfiQ].mp3" type="audio/mpeg">
@@ -295,5 +299,6 @@
             <p style="margin: 0 20px; text-align: center;">Higashiyama E © 2024</p>
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
